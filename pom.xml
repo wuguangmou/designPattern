@@ -91,7 +91,12 @@
       <artifactId>spring-test</artifactId>
       <version>4.0.0.RELEASE</version>
     </dependency>
-
+    <!-- 装饰者模式时引入的包，主要类为TransactionAwareCacheDecorator -->
+    <dependency>
+      <groupId>org.springframework.session</groupId>
+      <artifactId>spring-session-data-redis</artifactId>
+      <version>1.2.0.RELEASE</version>
+    </dependency>
 
   </dependencies>
 
