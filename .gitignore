@@ -1,4 +1,5 @@
 *.class
+*.jad
 
 # package file
 *.war
