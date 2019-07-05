@@ -1,0 +1,31 @@
+访问者模式：封装作用于某数据结构（如List/Set/Map等）中的各元素的操作。
+类型：行为型。访问者模式可以在不改变各元素的类的前提下，定义作用于这些元素的操作。
+
+适用场景：数据结构与数据操作分离。
+         一个数据结构（如List/Set/Map等）包含很多类型对象。
+
+优点：增加新的操作很容易，即增加一个新的访问者。
+      可拓展性好，符合单一职责原则。
+缺点：增加新的数据结构困难。
+      具体元素变更比较麻烦。
+
+------------------------------------------------------------------------------------------------------------------------
+JDK/Spring源码分析：
+1.java.nio.FileVisitor类：
+FileVisitor是一个接口，从名字可以看出来，这是一个文件访问者类，通过这个类去遍历一颗文件树，会比较方便，其中封装了遍历文件的一些
+方法，它的实现类是SimpleFileVisitor。
+
+2.Spring中的BeanDefinitionVisitor类：
+这个类可以遍历Bean的各种属性，在方法visitBeanDefinition()中，可以看出，其对Bean的各个属性值进行分解：
+    public void visitBeanDefinition(BeanDefinition beanDefinition) {
+            visitParentName(beanDefinition);
+            visitBeanClassName(beanDefinition);
+            visitFactoryBeanName(beanDefinition);
+            visitFactoryMethodName(beanDefinition);
+            visitScope(beanDefinition);
+            visitPropertyValues(beanDefinition.getPropertyValues());
+            ConstructorArgumentValues cas = beanDefinition.getConstructorArgumentValues();
+            visitIndexedArgumentValues(cas.getIndexedArgumentValues());
+            visitGenericArgumentValues(cas.getGenericArgumentValues());
+    }
+访问者模式在日常的开发中几乎不会使用到，但学习访问者模式，可以更清楚的阅读源码。

@@ -27,6 +27,13 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- servlet api包 -->
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-servlet-api</artifactId>
+      <version>7.0.64</version>
+    </dependency>
+
     <!-- google guava核心库 -->
     <dependency>
       <groupId>com.google.guava</groupId>
